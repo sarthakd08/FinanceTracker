@@ -9,7 +9,7 @@ function Main() {
 
     return (
         <Card className={classes.root}>
-            <CardHeader title={'Expense Tracker'} subheader={'Powered by Speechly'} />
+            <CardHeader title={'Expense Tracker'}  />
             <CardContent>
                 <Typography variant="h5" align="center">Total Balance : Rs 100</Typography>
                 <Typography variant="subtitle1" style={{lineHeight: '1.5em', marginTop: '20px'}}>Try Saying</Typography>
