@@ -1,4 +1,4 @@
-export default (date) => {
+export const formateDate = (date) => {
     const d = new Date(date);
     let month = `${d.getMonth() + 1}`;
     let day = `${d.getDate()}`;
@@ -9,3 +9,10 @@ export default (date) => {
   
     return [year, month, day].join('-');
   };
+
+
+export const getMonth = (date)  => {
+    const d = date ? new Date(date) : new Date();
+    let month = `${d.getMonth() + 1}`;
+    return month.length < 2 ? `0${month}` : month;
+}

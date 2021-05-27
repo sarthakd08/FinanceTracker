@@ -4,6 +4,8 @@
 }
 
 body {
-    background: linear-gradient(rgba(0,0,0, 0.5), rgba(248, 246, 246, 0.5)), url('./assets/expenseBG.png');
+    background: linear-gradient(rgba(206, 192, 192, 0.5), rgba(197, 75, 75, 0.5));
+    /* url('./assets/expenseBG.png') */
     background-size: cover;
+    padding: 20px;
 }

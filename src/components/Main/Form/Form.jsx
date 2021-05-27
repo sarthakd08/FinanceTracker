@@ -3,7 +3,7 @@ import {TextField, Typography, Grid, Button, FormControl, InputLabel, Select, Me
 import {ExpenseTrackerContext} from '../../../context/context';
 import { v4 as uuidv4} from 'uuid';
 import {expenseCategories, incomeCategories} from '../../../constants/categories';
-import formateDate from '../../../utils/formateDate'
+import {formateDate} from '../../../utils/formateDate'
 
 import useStyles from './styles';
 

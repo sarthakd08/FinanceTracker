@@ -27,4 +27,11 @@ export default makeStyles((theme) => ({
       margin: theme.spacing(2),
     },
   },
+  selectContainer: {
+    margin: '20px',
+    width: '200px',
+    height: '50px',
+    background: 'white',
+    padding: '5px',
+    },
 }));
