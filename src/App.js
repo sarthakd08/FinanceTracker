@@ -9,32 +9,39 @@ import Main from './components/Main/Main';
 import {monthsList} from './constants/AppConstants';
 import {ExpenseTrackerContext} from './context/context'
 import { getMonth } from './utils/formateDate';
+import {getFilteredTransactions} from './context/contextUtils'
 
 const App = () => {
-    const {selectedMonth} =  useContext(ExpenseTrackerContext);
-    // const [selectedMonth, setSelectedMonth] = useState({});
+    const {selectMonth, setTransactions} =  useContext(ExpenseTrackerContext);
+    const [selectedMonth, setSelectedMonth] = useState({});
     const classes = useStyles();
 
     useEffect(() => {
         //API to call all Transactions, ie. getting from local Storage in our case
-    //    const allTransactions = JSON.parse(localStorage.getItem('transactions'));
-    //    if(allTransactions?.length) {
-    //        const currentMonth = getMonth();
-    //        setAllTransactions(allTransactions);
-    //     //    filterTransactionsForMonth(currentMonth);
-    //    }
-
-    //    return(() => {
-    //        console.log('Exittingggggggg');
-    //    })
+        const allTransactions = JSON.parse(localStorage.getItem('transactions'));
+        if(allTransactions?.length) {
+            setTransactions(allTransactions);
+            monthsList.forEach((m) => {
+                if(m.value == getMonth()) {
+                    setSelectedMonth(m);
+                    selectMonth(m);
+                }
+            })
+        }
+    
     }, [])
+
+    const selectOnChange = (e) => {
+        setSelectedMonth(e.target.value);
+        selectMonth(e.target.value);
+    }
 
     return (
         <div>
-            {/* <Select className={classes.selectContainer} onChange={(e) => {filterTransactionsForMonth(e.target.value)}}>
-                {monthsList.map((c) => <MenuItem key={c.value} value={c.value}>{c.name}</MenuItem>)}
+            <Select className={classes.selectContainer} value={selectedMonth} onChange={selectOnChange}>
+                {monthsList.map((c) => <MenuItem key={c.value} value={c}>{c.name}</MenuItem>)}
             </Select>
-             */}
+            
             <Grid className={classes.grid} container spacing={2} alignItems="center" justify="center" >
                 <Grid item xs={12} sm={4} className={classes.mobile}> 
                     <Details title={'Income'} type={'income'} />

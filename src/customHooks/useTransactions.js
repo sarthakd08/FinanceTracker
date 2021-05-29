@@ -2,12 +2,16 @@ import {useContext} from 'react'
 
 import {ExpenseTrackerContext} from '../context/context';
 import { incomeCategories, expenseCategories, resetCategories} from '../constants/categories';
+import {getFilteredTransactions} from '../context/contextUtils';
 
 const useTransactions = (title) => {
     resetCategories();
-    const {transactions} = useContext(ExpenseTrackerContext);
+    const {transactions, userSelectedMonth} = useContext(ExpenseTrackerContext);
     // console.log('TRANSACTION FROM CONTEXT', transactions);
-    const transactionsPerType = transactions.filter((t) => t.type === title);
+    let transactionsPerType = transactions.filter((t) => t.type === title);
+    if(userSelectedMonth) {
+        transactionsPerType = getFilteredTransactions(userSelectedMonth.value, transactionsPerType);
+    }
     const total = transactionsPerType.reduce((all, item, index) => {
         return all += item.amount;
     }, 0)

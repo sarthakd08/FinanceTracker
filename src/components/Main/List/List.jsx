@@ -1,16 +1,25 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { List as MUIList, ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, IconButton, Slide } from '@material-ui/core';
 import { Delete, MoneyOff } from '@material-ui/icons';
-import {ExpenseTrackerContext} from '../../../context/context'
+import {ExpenseTrackerContext} from '../../../context/context';
+import {getFilteredTransactions} from '../../../context/contextUtils';
 
 // import { ExpenseTrackerContext } from '../../../context/context';
 import useStyles from './styles';
 
 const List = () => {
     const classes = useStyles();
-    const {transactions, deleteTransaction} = useContext(ExpenseTrackerContext)
+    const {transactions, deleteTransaction, userSelectedMonth} = useContext(ExpenseTrackerContext)
 
-    // const transactions = [];
+    const [listOfTransactions, setListOfTransactions] = useState(transactions)
+
+    useEffect(() => {
+        if(userSelectedMonth) {
+            let monthlyTransactions = getFilteredTransactions(userSelectedMonth.value, transactions);
+            console.log('In list Transactions', monthlyTransactions);
+            setListOfTransactions(monthlyTransactions);
+        }
+    }, [userSelectedMonth])
 
     const removeTransaction = (id) => {
         if(id) {
@@ -20,7 +29,7 @@ const List = () => {
 
     return (
         <MUIList dense={false} className={classes.list}>
-            {transactions.map((transaction) => (
+            {listOfTransactions?.map((transaction) => (
                 <Slide direction="down" in mountOnEnter unmountOnExit key={transaction.id}>
                 <ListItem>
                     <ListItemAvatar>

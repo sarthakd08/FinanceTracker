@@ -1,20 +1,27 @@
 import {getFilteredTransactions} from './contextUtils';
 
+// eg state = {
+//     transactions: [],
+//     selectedMonth
+// }
 const contextReducer = (state, action) => {
     let transactions = [];
     switch (action.type) {
-        // case 'SET_ALL_TRANSACTIONS':
-        //     transactions = [...action.payload];
-        //     return transactions;
+        case 'SET_TRANSACTIONS':
+            transactions = [...action.payload];
+            return {...state, transactions};
         case 'ADD_TRANSACTION':
-            transactions = [action.payload, ...state]; //To make the transaction add at top of array, first add the new payload and then spread all the existing.
+            transactions = [action.payload, ...state.transactions]; //To make the transaction add at top of array, first add the new payload and then spread all the existing.
             localStorage.setItem('transactions', JSON.stringify(transactions));
-            return transactions;
+            return {...state, transactions };
 
         case 'DELETE_TRANSACTION':
-            transactions = state.filter((t) => t.id !== action.payload)
+            transactions = state.transactions.filter((t) => t.id !== action.payload)
             localStorage.setItem('transactions', JSON.stringify(transactions));
-            return transactions;
+            return {...state, transactions};
+
+        case 'SET_SELECTED_MONTH': 
+            return {...state, selectedMonth: action.payload}
         
         // case 'FILTER_TRANSACTIONS_FOR_MONTH':
         //     console.log('FILTERRRR', action.payload, state);

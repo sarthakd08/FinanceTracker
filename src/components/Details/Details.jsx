@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useContext} from 'react'
 import PropTypes from 'prop-types'
 import {Card, CardHeader, CardContent, Typography} from '@material-ui/core';
 import { Doughnut } from 'react-chartjs-2';
