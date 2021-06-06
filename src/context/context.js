@@ -1,6 +1,7 @@
 import React, {useReducer, createContext} from 'react';
 import contextReducer from './contextReducer';
 import {addTransaction, deleteTransaction} from './actions';
+import AuthContextProvider from './AuthContext';
 
 // const initialState = JSON.parse(localStorage.getItem('transactions')) || [];
 // const initialState = [];
@@ -29,16 +30,18 @@ export const Provider = ({children}) => {
 
 
     return (
-        <ExpenseTrackerContext.Provider value={{ 
-            addTransaction, 
-            deleteTransaction,
-            transactions: state.transactions,
-            balance,
-            selectMonth,
-            userSelectedMonth: state.selectedMonth,
-            setTransactions
-        }}>
-            {children}
-        </ExpenseTrackerContext.Provider>
+        <AuthContextProvider>
+            <ExpenseTrackerContext.Provider value={{ 
+                addTransaction, 
+                deleteTransaction,
+                transactions: state.transactions,
+                balance,
+                selectMonth,
+                userSelectedMonth: state.selectedMonth,
+                setTransactions
+            }}>
+                {children}
+            </ExpenseTrackerContext.Provider>
+        </AuthContextProvider>
     )
 }
