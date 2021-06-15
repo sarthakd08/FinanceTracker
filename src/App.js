@@ -9,7 +9,7 @@ import Main from './components/Main/Main';
 import {monthsList} from './constants/AppConstants';
 import {ExpenseTrackerContext} from './context/context'
 import { getMonth } from './utils/formateDate';
-import {getFilteredTransactions} from './context/contextUtils'
+import {getFilteredTransactions} from './context/contextUtils';
 
 const App = () => {
     const {selectMonth, setTransactions} =  useContext(ExpenseTrackerContext);
