@@ -7,12 +7,14 @@ import Details from './components/Details/Details';
 import Main from './components/Main/Main';
 
 import {monthsList} from './constants/AppConstants';
-import {ExpenseTrackerContext} from './context/context'
+import {ExpenseTrackerContext} from './context/context';
+import {AuthContext} from './context/AuthContext';
 import { getMonth } from './utils/formateDate';
-import {getFilteredTransactions} from './context/contextUtils';
+import Header from './components/Header/Header';
 
 const App = () => {
     const {selectMonth, setTransactions} =  useContext(ExpenseTrackerContext);
+    const {currentUser} = useContext(AuthContext);
     const [selectedMonth, setSelectedMonth] = useState({});
     const classes = useStyles();
 
@@ -38,11 +40,13 @@ const App = () => {
 
     return (
         <div>
+            <Header />
             <Select className={classes.selectContainer} value={selectedMonth} onChange={selectOnChange}>
                 {monthsList.map((c) => <MenuItem key={c.value} value={c}>{c.name}</MenuItem>)}
             </Select>
-            
-            <Grid className={classes.grid} container spacing={2} alignItems="center" justify="center" >
+            {currentUser && currentUser.email}
+
+            <Grid className={classes.grid} container  alignItems="center" justify="center" >
                 <Grid item xs={12} sm={4} className={classes.mobile}> 
                     <Details title={'Income'} type={'income'} />
                 </Grid>

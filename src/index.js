@@ -10,6 +10,7 @@ import './index.css';
 ReactDOM.render(
     <Provider>
         <BrowserRouter>
+            
             <Routes />
         </BrowserRouter>
     </Provider>,

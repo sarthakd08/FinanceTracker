@@ -6,5 +6,9 @@ export default makeStyles(() => ({
     }, 
     expense : {
         borderBottom: '10px solid rgba(255, 0, 0, 0.5)'
+    },
+    card: {
+        background: '#12232E',
+        color: '#e8e8e8'
     }
 }))
