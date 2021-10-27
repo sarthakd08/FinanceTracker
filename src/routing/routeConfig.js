@@ -1,15 +1,9 @@
 import React from 'react';
 
-const App = React.lazy(() => import('../App'));
+import Login from '../components/Login/Login';
 
-const Route1 = (props) => {
-    console.log('Route1 props', props);
-    return (
-    <div>
-        <h3>Route 1</h3>
-    </div>
-    )
-}
+const App = React.lazy(() => import('../App'));
+const SignUp = React.lazy(() => import('../components/SignUp/SignUp'))
 
 const routesConfig = [
     {
@@ -20,14 +14,22 @@ const routesConfig = [
       doNeedStateEngine: false,
       showOnlyToLoggedInUser: false,
     },
-//     {
-//       path: '/signin',
-//       Component: SignInAndSignUpPage,
-//       exact: true,
-//       name: 'signin',
-//       doNeedStateEngine: true,
-//       showOnlyToLoggedInUser: true,
-//     },
+    {
+      path: '/signup',
+      Component: SignUp,
+      exact: true,
+      name: 'Sign Up',
+      doNeedStateEngine: false,
+      showOnlyToLoggedInUser: false,
+    },
+    {
+      path: '/login',
+      Component: Login,
+      exact: true,
+      name: 'Login',
+      doNeedStateEngine: true,
+      showOnlyToLoggedInUser: true,
+    },
 ]
 
 export default routesConfig;

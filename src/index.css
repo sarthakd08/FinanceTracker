@@ -4,8 +4,37 @@
 }
 
 body {
-    background: linear-gradient(rgba(206, 192, 192, 0.5), rgba(197, 75, 75, 0.5));
-    /* url('./assets/expenseBG.png') */
+    /* background: linear-gradient(rgba(206, 192, 192, 0.5), rgba(197, 75, 75, 0.5)); */
+    background: #2d545e;
+    /* background: url('./assets/expenseBG.png'); */
     background-size: cover;
-    padding: 20px;
+    /* padding: 20px; */
+    color: #e8e8e8;
 }
+
+/* 
+Deep rusted red: #c1432e
+Silver head-dress: #4b6777
+Rusted Gold: #ce9e62
+Black for Contrast: #2c2c2c */
+
+/* 
+Dark Blue: #12232E
+Lighter Blue: #007CC7
+Lightest Blue: #4DA8DA
+Shadow of Dark Blue: #203647
+Shadow of Light Blue: #EEFBFB
+Background Light Blue: #f4f7f6 */
+
+
+/* Blackish: #202020\
+Dark Grey: #3F3F3F
+Medium Grey: #707070
+Egg Yellow: #FFD6C
+White: #FFFFFF */
+
+
+/* Sand Tan: #e1b382
+Sand Tan Shadow: #c89666
+Night Blue: #2d545e
+Night Blue Shadow: #12343b */

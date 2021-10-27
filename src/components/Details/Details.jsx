@@ -11,7 +11,8 @@ function Details({title, type}) {
     const {total, chartData} = useTransactions(title);
 
     return (
-        <Card className={type === TRANSACTION_TYPES.INCOME ? styles.income : styles.expense}>
+        // <Card className={type === TRANSACTION_TYPES.INCOME ? styles.income : styles.expense}>
+        <Card className={styles.card}>
             <CardHeader title={title}/>
             <CardContent>
                 <Typography variant="h5">Rs. {total}</Typography>

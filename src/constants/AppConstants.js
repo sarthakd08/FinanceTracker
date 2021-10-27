@@ -14,5 +14,6 @@ export const monthsList = [
     {name: 'FEBRUARY', value: '02'},
     {name: 'MARCH', value: '03'},
     {name: 'APRIL', value: '04'},
-    {name: 'MAY', value: '05'}
+    {name: 'MAY', value: '05'},
+    {name: 'JUNE', value: '06'},
 ]

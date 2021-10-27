@@ -17,10 +17,10 @@ export default makeStyles((theme) => ({
     },
   },
   last: {
-    [theme.breakpoints.down('sm')]: {
-      marginBottom: theme.spacing(3),
-      paddingBottom: '200px',
-    },
+    // [theme.breakpoints.down('sm')]: {
+    //   marginBottom: theme.spacing(3),
+    //   paddingBottom: '200px',
+    // },
   },
   grid: {
     '& > *': {
